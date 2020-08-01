@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'questions#index'
+  get '/signup', to: 'users#new'
   resources :users 
   resources :questions 
   resources :answers
