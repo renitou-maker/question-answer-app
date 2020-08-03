@@ -37,6 +37,7 @@ group :production do
   gem 'sqlite3', '1.4.1'
 end
 
+gem 'rails-i18n'
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
