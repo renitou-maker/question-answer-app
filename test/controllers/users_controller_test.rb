@@ -14,6 +14,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    log_in_as(@user)
     get users_path
     assert_response :success
   end
@@ -45,4 +46,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert flash.empty?
     assert_redirected_to root_url
   end
+  
+  test "Usersインデックスに非ログインユーザーがアクセスした場合" do
+    get users_path
+    assert_redirected_to login_url
+  end
+  
+  
 end
