@@ -1,2 +1,26 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>ユーザー一覧</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+      <% if current_user.admin? && !current_user?(user) %>
+      <div class = "button">
+        <%= link_to '削除', user, method: :delete,
+                                  data: {confirm: "本当に削除しても宜しいですか？"} %>
+      </div>
+      <% end %>
+      
+      <% if current_user.id == user.id %> 
+        <div class = "button">
+          <%= link_to '削除', user, method: :delete,
+                                  data: {confirm: "本当に削除しても宜しいですか？"} %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

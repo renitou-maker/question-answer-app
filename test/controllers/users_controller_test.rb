@@ -1,7 +1,5 @@
 require 'test_helper'
 
-  
-
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:ren)
@@ -14,6 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    log_in_as(@user)
     get users_path
     assert_response :success
   end
@@ -45,4 +44,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert flash.empty?
     assert_redirected_to root_url
   end
+  
+  # test 'ログイン中のユーザーとは異なるidのユーザーにはdeleteボタンが表示されない' do
+  #   log_in_as(@other_user)
+  #   get users_path
+  #   assert_select "a[href=?]", DELETE_path,count: 1
+  # end
+  
+  
+  
 end
