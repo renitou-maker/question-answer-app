@@ -1,7 +1,5 @@
 require 'test_helper'
 
-  
-
 class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:ren)
@@ -47,10 +45,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
   
-  test "Usersインデックスに非ログインユーザーがアクセスした場合" do
-    get users_path
-    assert_redirected_to login_url
-  end
+  # test 'ログイン中のユーザーとは異なるidのユーザーにはdeleteボタンが表示されない' do
+  #   log_in_as(@other_user)
+  #   get users_path
+  #   assert_select "a[href=?]", DELETE_path,count: 1
+  # end
+  
   
   
 end
