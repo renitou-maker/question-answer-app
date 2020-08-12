@@ -13,8 +13,8 @@
       </div>
       <% end %>
       
-      <% if current_user.id == user.id %> 
-        <div class = "button">
+      <% if current_user?(user) %> 
+        <div class = "delete-button">
           <%= link_to '削除', user, method: :delete,
                                   data: {confirm: "本当に削除しても宜しいですか？"} %>
         </div>
