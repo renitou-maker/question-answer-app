@@ -6,4 +6,20 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.questions.any? %>
+    <%= will_paginate @questions %>
+      <h3>投稿された質問 (<%= @user.questions.count %>)</h3>
+      <ol class="questions">
+        <%= render @questions %>
+      </ol>
+      <%= will_paginate @questions %>
+    <% end %>
+  </div>
+  <% if !@user.questions.any? %>
+  <div class="question-nil">
+    <h2 class="question-recomend">まだ投稿はありません,早速質問してみましょう！</h2>
+    <span><%= link_to '質問する', new_question_path,class: "btn btn-primary" %></span>
+    </div>
+  <% end %>
 </div>

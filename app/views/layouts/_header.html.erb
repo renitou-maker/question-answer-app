@@ -3,8 +3,9 @@
     <%= link_to "Question & Answer", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "トップ", root_path %></li>
+        <li><%= link_to "質問一覧", root_path %></li>
         <% if logged_in? %>
+          <li><%= link_to '質問する' , new_question_path %></li>
           <li><%= link_to "ユーザー一覧", users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
