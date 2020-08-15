@@ -34,4 +34,36 @@
     </div>
     </div>
   <% end %>
-    
+  <hr>
+  
+      <h3>ユーザーの回答</h3>
+      <table class="table table-striped">
+        <% if @question.answers.any? %>
+          <% @question.answers.each do |answer| %>
+            <div class="answer-box">
+              <hr>
+              <%= answer.content %>
+              <br>
+              <%= link_to '[Edit]', edit_question_answer_path(@question,answer) %> 
+              <%= link_to '[Delete]', question_answer_path(@question,answer), method: :delete, data:{ confirm: '本当に削除してもよろしいですか？'} %>
+            </div>
+          <% end %>
+          </tbody>
+        <% else %>
+          <p>まだ回答がありません</p>
+        <% end %>
+  <hr>
+        
+  <div class="answer-create">
+  <%= form_with model: [@question,@answer], local: true do |f| %>
+  <%= f.hidden_field :question_id, { value: @question.id } %>
+  <div class="form-group">
+    <label>回答する</label>
+    <%= f.text_area :content, class: 'form-control', placeholder: '回答内容を入力して下さい' %>
+  </div>
+  <%= f.submit "回答を投稿する", class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+  <div>
+    <%= link_to '質問一覧へ戻る', questions_path %>
+  </div>

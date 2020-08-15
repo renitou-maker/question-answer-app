@@ -39,9 +39,16 @@ class QuestionTest < ActiveSupport::TestCase
   end
   
   
-  
   test "新しい質問が先頭に来る事を確認" do
     assert_equal questions(:rails), Question.first
+  end
+  
+   test "@questionが削除されると、@answerも削除される" do
+    @question.save
+    @question.answers.create!(content: "Ren")
+    assert_difference 'Answer.count', -1 do
+      @question.destroy
+    end
   end
   
 end

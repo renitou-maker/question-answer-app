@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one: 
+  content: "初めての回答"
+  created_at: <%= 10.minutes.ago %>
+  question: rails
+  
+two:
+  content: "二つ目の回答"
+  created_at: <%= 1.hours.ago %>
+  question: python
+  
+three:
+  content: "三つ目の回答"
+  created_at: <%= 4.days.ago %>
+  question: golang

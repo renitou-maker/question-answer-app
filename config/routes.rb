@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/about', to: 'application#about'
   get '/contact', to: 'application#contact'
   resources :users 
-  resources :questions 
-  resources :answers
+  resources :questions do
+    resources :answers
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

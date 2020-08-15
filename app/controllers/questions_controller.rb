@@ -11,10 +11,14 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
   def edit
     @question = Question.find(params[:id])
+  end
+  
+  def update
   end
   
   def create
