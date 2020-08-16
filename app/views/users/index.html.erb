@@ -7,7 +7,7 @@
     <li>
       <%= link_to user.name, user %>
       <% if current_user.admin? && !current_user?(user) %>
-      <div class = "button">
+      <div class = "delete-button">
         <%= link_to '削除', user, method: :delete,
                                   data: {confirm: "本当に削除しても宜しいですか？"} %>
       </div>
