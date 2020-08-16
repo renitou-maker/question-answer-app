@@ -13,23 +13,23 @@
   <% if logged_in? &&  current_user.admin?  %>
     <div class="delete-edit-area">
       <span class="delete-button">
-        <%= link_to '削除', @question, method: :delete,
+        <%= link_to '【削除】', @question, method: :delete,
                             data: {confirm: "本当に削除しても宜しいですか?"} %>
-     </span>
-     <span class="edit-button">
-        <%= link_to '編集', edit_question_path %>
-     </span>
+      </span>
+      <span class="edit-button">
+        <%= link_to '【編集】', edit_question_path %>
+      </span>
     </div>
   <% end %>
   
   <% if logged_in? && current_user?(@question.user) && !current_user.admin? %>
     <div class="delete-edit-area">
       <span class="delete-button">
-        <%= link_to '削除', @question, method: :delete,
+        <%= link_to '【削除】', @question, method: :delete,
                             data: {confirm: "本当に削除しても宜しいですか?"} %>
       </span>
       <span class="edit-button">
-        <%= link_to '編集', edit_question_path %>
+        <%= link_to '【編集】', edit_question_path %>
       </span>
     </div>
     </div>
@@ -43,9 +43,14 @@
             <div class="answer-box">
               <hr>
               <%= answer.content %>
+              <% if logged_in? && current_user.admin? %>
               <br>
-              <%= link_to '[Edit]', edit_question_answer_path(@question,answer) %> 
-              <%= link_to '[Delete]', question_answer_path(@question,answer), method: :delete, data:{ confirm: '本当に削除してもよろしいですか？'} %>
+              <span class = "delete-button">
+                <%= link_to '【削除】', question_answer_path(@question,answer), method: :delete, data:{ confirm: '本当に削除してもよろしいですか？'} %>
+              </span>
+              <% end %>
+              <br>
+              <span class="data create">作成日時:<%= l answer.created_at, format: :short %></span>
             </div>
           <% end %>
           </tbody>
@@ -64,6 +69,6 @@
   <%= f.submit "回答を投稿する", class: 'btn btn-primary' %>
   <% end %>
   </div>
-  <div>
+  <div class="home-back">
     <%= link_to '質問一覧へ戻る', questions_path %>
   </div>

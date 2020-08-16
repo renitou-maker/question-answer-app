@@ -19,6 +19,13 @@ class QuestionsController < ApplicationController
   end
   
   def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      flash[:success] = "質問内容を更新しました"
+      redirect_to question_path(@question)
+    else
+      render 'questions/edit'
+    end
   end
   
   def create
@@ -42,7 +49,7 @@ class QuestionsController < ApplicationController
   private
     
     def question_params
-      params.require(:question).permit(:title,:content)
+      params.require(:question).permit(:title,:content,:image)
     end
   
 end

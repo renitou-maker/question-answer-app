@@ -1,2 +1,12 @@
-<h1>Questions#edit</h1>
-<p>Find me in app/views/questions/edit.html.erb</p>
+<%= form_with(model: @question, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @question %>
+  <div  id="question_form">
+    <%= f.text_field :title, placeholder: "タイトルを入力して下さい" %>
+    <%= f.text_area :content, placeholder: "質問したい内容を入力して下さい" %>
+    <span class="image">
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
+  </div>
+  <%= f.submit "質問を編集する", class: "btn btn-primary" %>
+<% end %>
+
