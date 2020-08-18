@@ -28,7 +28,7 @@
   <% if !@user.questions.any? %>
   <div class="question-nil">
     <h2 class="question-recomend">まだ投稿はありません,早速質問してみましょう！</h2>
-    <span><%= link_to '質問する', new_question_path,class: "btn btn-primary" %></span>
+    <span><%= link_to '質問する', new_question_path,class: "btn btn-primary btn-recomend" %></span>
     </div>
   <% end %>
 </div>
