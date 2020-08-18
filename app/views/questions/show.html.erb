@@ -3,7 +3,7 @@
     <h4><%= link_to @question.user.name , user_path(@question.user) %></h4>
     <h2><%= @question.title %></h2>
   <div>
-    <textarea name="description"><%= @question.content %></textarea>
+    <span name="description"><%= @question.content %></span>
 </div>
  <span class="question-iamge">
    <%= image_tag @question.display_image if @question.image.attached? %>
@@ -43,7 +43,7 @@
           <% @question.answers.each do |answer| %>
             <div class="answer-box">
               <hr>
-              <textarea name="description"><%= answer.content %></textarea>
+              <span name="description"><%= answer.content %></span>
               <% if logged_in? && current_user.admin? %>
                 <br>
                 <span class = "delete-button">
@@ -73,7 +73,7 @@
     <%= f.text_area :content, class: 'form-control', placeholder: '回答内容を入力して下さい' %>
   </div>
   <%= f.submit "回答を投稿する", class: 'btn btn-primary' %>
-  <% end %>                       
+  <% end %>
   </div>
   <div class="home-back">
     <%= link_to '質問一覧へ戻る', questions_path %>
