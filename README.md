@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Q&Aアプリです。
+ログインしたユーザーのみが質問及び質問に対する回答を行う事が出来ます。
+ログインユーザーはプロフィールページから自らのアカウントを削除することが可能で、adminユーザーのみがユーザーIndexから全てのユーザーを削除できます。
+質問の作成者は自らの質問を編集削除することが可能で、質問が削除されれば紐づく回答も削除されます。
+adminユーザーは全ての質問に対して編集削除を実行でき、また全ての回答を削除することが出来ます。

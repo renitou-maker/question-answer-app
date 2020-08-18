@@ -15,6 +15,10 @@ group :development, :test do
   gem 'byebug',  '11.0.1', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :production do
+  gem 'pg', '1.1.4'
+end
+
 group :development do
   gem 'web-console',           '4.0.1'
   gem 'listen',                '3.1.5'
@@ -31,10 +35,6 @@ group :test do
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
-end
-
-group :production do
-  gem 'sqlite3', '1.4.1'
 end
 
 gem 'rails-i18n'

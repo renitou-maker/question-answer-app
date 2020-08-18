@@ -4,6 +4,15 @@
       <h1>
         <%= @user.name %>
       </h1>
+      <% if logged_in? && current_user.id == @user.id %>
+      <span class="button-under">
+        <%= link_to '[ユーザー情報編集]', edit_user_path(@user) %>
+      </span>
+      <span class="button-under">
+        <%= link_to '[ユーザー削除]', @user, method: :delete,
+                                      data: { confirm: '本当にユーザーを削除しても宜しいですか？'}%>
+      </span>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">

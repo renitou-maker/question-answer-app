@@ -7,7 +7,7 @@
       <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
     </span>
   </div>
-  <%= f.submit "質問作成", class: "btn btn-primary" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
 
 <script type="text/javascript">
