@@ -3,7 +3,7 @@
     <h4><%= link_to @question.user.name , user_path(@question.user) %></h4>
     <h2><%= @question.title %></h2>
   <div>
-    <%= @question.content %>
+    <textarea name="description"><%= @question.content %></textarea>
 </div>
  <span class="question-iamge">
    <%= image_tag @question.display_image if @question.image.attached? %>
@@ -43,7 +43,7 @@
           <% @question.answers.each do |answer| %>
             <div class="answer-box">
               <hr>
-              <%= answer.content %>
+              <textarea name="description"><%= answer.content %></textarea>
               <% if logged_in? && current_user.admin? %>
                 <br>
                 <span class = "delete-button">
