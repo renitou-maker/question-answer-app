@@ -1,7 +1,6 @@
 class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
-  has_many :likes, dependent: :destory
   has_one_attached :image
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
@@ -12,7 +11,4 @@ class Question < ApplicationRecord
                       size:         { less_than: 5.megabytes,
                                       message: "should be less than 5MB" }
                                       
-  def display_image
-    image.variant(resize_to_limit: [500, 500])
-  end
 end

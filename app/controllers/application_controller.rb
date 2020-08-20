@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
           redirect_to login_url
         end
     end
+    
+    def display_image
+      image.variant(resize_to_limit: [500, 500])
+    end
   
 end

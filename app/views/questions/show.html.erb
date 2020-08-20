@@ -6,7 +6,7 @@
     <%= simple_format(@question.content) %>
 </div>
  <span class="question-iamge">
-   <%= image_tag @question.image if @question.image.attached? %>
+   <%= image_tag @question.image.variant(resize_to_limit: [500, 500]) if @question.image.attached? %>
  </span>
  <div class="under-content">
  <span class="data create">作成日時:<%= l @question.created_at, format: :short %></span>
@@ -44,6 +44,7 @@
             <div class="answer-box">
               <hr>
              　<%= simple_format(answer.content) %>
+             　<%= image_tag answer.image.variant(resize_to_limit: [500, 500]) if answer.image.attached? %>
               <% if logged_in? && current_user.admin? %>
                 <br>
                 <span class = "delete-button">
@@ -71,10 +72,23 @@
   <div class="form-group">
     <label>回答する</label>
     <%= f.text_area :content, class: 'form-control', placeholder: '回答内容を入力して下さい' %>
-  </div>
+    </div>
+    <span class="image">
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
   <%= f.submit "回答を投稿する", class: 'btn btn-primary' %>
   <% end %>
   </div>
   <div class="home-back">
     <%= link_to '質問一覧へ戻る', questions_path %>
   </div>
+  
+<script type="text/javascript">
+  $("#micropost_image").bind("change", function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert("Maximum file size is 5MB. Please choose a smaller file.");
+      $("#micropost_image").val("");
+    }
+  });
+</script>
