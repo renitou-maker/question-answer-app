@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/about', to: 'application#about'
   get '/contact', to: 'application#contact'
   resources :users 
+  resources :likes, only: [:create, :destroy]
   resources :questions do
     resources :answers
   end

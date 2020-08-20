@@ -4,6 +4,7 @@ class AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
+    @answer.image.attach(params[:answer][:image])
     if @answer.save
       flash[:success] = "回答が投稿されました"
       redirect_to question_path(@question)
@@ -23,7 +24,7 @@ class AnswersController < ApplicationController
   private
   
     def answer_params
-      params.require(:answer).permit(:content,:question_id)
+      params.require(:answer).permit(:content,:question_id,:image)
     end
   
 end
